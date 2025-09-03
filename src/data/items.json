@@ -11,7 +11,7 @@
   {
     "name": "Objeto 2",
     "description": "Descripción 2",
-    "precio": "",
+    "precio": "1000",
     "categoría": "",
     "stock": "",
     "fecha": "",

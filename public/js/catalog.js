@@ -1,4 +1,4 @@
-// Script base para la vista de catálogo
+import { getItems, getItem, createItem, updateItem, deleteItem } from "./services/api.js";
 // Aquí deben consumir la API de items y mostrarlos en la página
 
 // Constante con la URL base de la API
