@@ -44,18 +44,26 @@ form.addEventListener("submit", async (e) => {
     const name = form.querySelector("#name").value;
     const description = form.querySelector("#description").value;
     const price = form.querySelector("#price").value;
+    const date = form.querySelector("#date").value;
+    const category = form.querySelector("#category").value;
+    const stock = form.querySelector("#stock").value;
 
     if (!name) {
         alert("El campo nombre es obligatorio");
         return;
     }
 
+    if (description ) {
+        alert("El campo la description no puede tener espacio");
+        return;
+    }
+
     try {
         if (editingId) {
-            await updateItem(editingId, { name, description, price });
+            await updateItem(editingId, { name, description, price, date, category, stock });
             editingId = null;
         } else {
-            await createItem({ name, description, price });
+            await createItem({ name, description, price, date, category, stock });
         }
 
         resetForm(form, submitBtn);
