@@ -2,12 +2,19 @@
   {
     "name": "Objeto 1",
     "description": "Descripción 1",
-  
+    "precio": "5000",
+    "categoria": "u",
+    "stock": "50",
+    "fecha": "5/52/5402",
     "id": 1
   },
   {
     "name": "Objeto 2",
     "description": "Descripción 2",
+    "precio": "",
+    "categoría": "",
+    "stock": "",
+    "fecha": "",
     "id": 2
   }
 ]
