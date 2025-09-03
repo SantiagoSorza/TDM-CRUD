@@ -1,67 +1,11 @@
 [
   {
-    "name": "Objeto 1",
-    "description": "Descripción 1",
-    "price": "5000",
-    "category": "u",
-    "stock": "50",
-    "date": "5/52/5402",
-    "id": 1
-  },
-  {
-    "name": "Objeto 2",
-    "description": "Descripción 2",
-    "precio": "1000",
-    "categoría": "",
-    "stock": "",
-    "fecha": "",
-    "id": 2
-  },
-  {
-    "name": "fff",
-    "description": "sdas",
-    "price": "456",
-    "id": 1756907653581
-  },
-  {
-    "name": "ghkgh",
-    "description": "gdjgf",
-    "price": "543",
-    "date": {},
-    "category": {
-      "0": {},
-      "1": {},
-      "2": {},
-      "3": {}
-    },
-    "stock": {},
-    "id": 1756907708435
-  },
-  {
-    "name": "fdsfas",
-    "description": "fasf",
-    "price": "65",
+    "name": "dsjgf",
+    "description": "gbnfxgn",
+    "price": "8866",
     "date": "2025-09-01",
-    "category": "opt-1",
-    "stock": "65",
-    "id": 1756907761516
-  },
-  {
-    "name": "                           ",
-    "description": "                     ",
-    "price": "5465456",
-    "date": "2025-09-01",
-    "category": "opt-1",
-    "stock": "35665",
-    "id": 1756907868013
-  },
-  {
-    "name": "                   ",
-    "description": "                ",
-    "price": "5555555555",
-    "date": "2025-09-01",
-    "category": "opt-1",
-    "stock": "5555555555",
-    "id": 1756908034533
+    "category": "Mango",
+    "stock": "7864",
+    "id": 1756938053894
   }
 ]

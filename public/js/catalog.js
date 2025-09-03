@@ -1,32 +1,85 @@
 import { getItems } from "./services/api.js";
-// Seleccionamos el contenedor principal del catálogo
+
+
 const catalogContainer = document.getElementById("catalogContainer");
-// Función para renderizar un item en el catálogo
-function renderItem(item) {
-    // Actualizamos los elementos existentes en el HTML con los datos del item
-    document.getElementById("img").src = item.image || "";
-    document.getElementById("img").alt = item.name || "Producto";
-    document.getElementById("pro-name").textContent = item.name || "Sin nombre";
-    document.getElementById("pro-id").textContent = `ID: ${item.id || "-"}`;
-    document.getElementById("pro-descrip").textContent = item.description || "Sin descripción";
-    document.getElementById("pro-value").textContent = `Precio: ${item.price || "-"}`;
-    document.getElementById("pro-date").textContent = `Fecha: ${item.date || "-"}`;
-    document.getElementById("pro-categorie").textContent = `Categoría: ${item.category || "-"}`;
-    
-}
+const catalogModal = document.getElementById("catalogModal");
+
+
 // Función principal para cargar los items desde la API
 async function loadCatalog() {
     try {
-        const items = await getItems();
+        const data = await getItems();
+        const items = Array.isArray(data) ? data : Object.values(data);
         if (!items.length) {
             catalogContainer.innerHTML = "<p>No hay items para mostrar.</p>";
             return;
         }
-        renderItem(items[0]);
-    } catch (err) {
+        renderItem(items);} catch (err) {
         console.error("Error cargando catálogo:", err);
         catalogContainer.innerHTML = `<p>Error cargando catálogo: ${err.message}</p>`;
+
     }
 }
+
+//imagenes de las opciones de catalogos
+const categoryImages = {
+    "Mango": "https://cuidateplus.marca.com/sites/default/files/cms/inline-images/mango.jpg",
+    "Fresa": "https://cuidateplus.marca.com/sites/default/files/cms/inline-images/fresas_1_0.jpg",
+    "Papaya": "https://cuidateplus.marca.com/sites/default/files/cms/inline-images/papaya_0.jpg",
+    "Kiwi": "https://cuidateplus.marca.com/sites/default/files/cms/inline-images/kiwiok.jpg"
+};
+
+// Funcion para renderizar un item en el catálogo
+function renderItem(item) {
+    //ocultar modal del inicio
+    catalogModal.hidden = true; 
+
+    catalogContainer.innerHTML = "";
+
+    item.forEach(item => {
+
+        //cargar la imagen 
+        const imgSrc = categoryImages[item.category];
+        const div = document.createElement("div");
+
+        div.classList.add("item");
+        div.innerHTML = `
+            <img src="${imgSrc} "> 
+            <div class="item-body">
+            <h2>${item.name}</h2>
+            <p><strong> Precio: </strong>$${item.price} COP</p>
+            <p><strong> Stock: </strong>$${item.stock} unidades</p>
+            <button type="submit" class="detailsButton" id="${item.id}">Detalles</button>`;
+
+        catalogContainer.appendChild(div);
+
+        div.querySelector(".detailsButton").addEventListener("click", () => {
+            openModal(item, imgSrc);
+        });
+
+    });
+}
+
+// Modal
+function openModal(item, imgSrc) {
+    catalogModal.hidden = false;
+        catalogModal.innerHTML = `
+        <div class="modal-content">
+            <img src="${imgSrc}" alt="${item.category}" class="item-img"> 
+            <h3>${item.name}</h3>
+            <h3>${item.id}</h3>
+            <h3>${item.description}</h3>
+            <h3>${item.price}</h3>
+            <h3>${item.date}</h3>
+            <h3>${item.category}</h3>
+            <button type="button"  id="cerrarButton">Cerrar</button>
+        </div>
+        `;
+        document.getElementById("cerrarButton").addEventListener("click", () => {
+        catalogModal.hidden = true;
+    });
+    
+}
+
 // Inicializar el catálogo cuando cargue la página
-loadCatalog();
+document.addEventListener("DOMContentLoaded", loadCatalog);

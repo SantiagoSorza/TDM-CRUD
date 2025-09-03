@@ -53,11 +53,6 @@ form.addEventListener("submit", async (e) => {
         return;
     }
 
-    if (description ) {
-        alert("El campo la description no puede tener espacio");
-        return;
-    }
-
     try {
         if (editingId) {
             await updateItem(editingId, { name, description, price, date, category, stock });
