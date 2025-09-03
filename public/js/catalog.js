@@ -1,31 +1,31 @@
-import { getItems, getItem, createItem, updateItem, deleteItem } from "./services/api.js";
-// Aquí deben consumir la API de items y mostrarlos en la página
-
-// Constante con la URL base de la API
-const API_URL = "/api/items";
-
-// TODO: Seleccionar el contenedor donde se mostrarán los items
-// const catalogContainer = document.getElementById("...");
-
+import { getItems } from "./services/api.js";
+// Seleccionamos el contenedor principal del catálogo
+const catalogContainer = document.getElementById("catalogContainer");
+// Función para renderizar un item en el catálogo
+function renderItem(item) {
+    // Actualizamos los elementos existentes en el HTML con los datos del item
+    document.getElementById("img").src = item.image || "";
+    document.getElementById("img").alt = item.name || "Producto";
+    document.getElementById("pro-name").textContent = item.name || "Sin nombre";
+    document.getElementById("pro-id").textContent = `ID: ${item.id || "-"}`;
+    document.getElementById("pro-descrip").textContent = item.description || "Sin descripción";
+    document.getElementById("pro-value").textContent = `Precio: ${item.price || "-"}`;
+    document.getElementById("pro-date").textContent = `Fecha: ${item.creationDate || "-"}`;
+    document.getElementById("pro-categorie").textContent = `Categoría: ${item.category || "-"}`;
+}
 // Función principal para cargar los items desde la API
 async function loadCatalog() {
     try {
-        // 1. Hacer fetch a la API (GET /api/items)
-        // 2. Parsear la respuesta a JSON
-        // 3. Limpiar el contenedor del catálogo
-        // 4. Iterar sobre cada item y llamar a renderItem()
+        const items = await getItems();
+        if (!items.length) {
+            catalogContainer.innerHTML = "<p>No hay items para mostrar.</p>";
+            return;
+        }
+        renderItem(items[0]);
     } catch (err) {
         console.error("Error cargando catálogo:", err);
-        // TODO: Mostrar mensaje de error en la UI
+        catalogContainer.innerHTML = `<p>Error cargando catálogo: ${err.message}</p>`;
     }
 }
-
-// Función para renderizar un item en el catálogo
-function renderItem(item) {
-    // TODO: Crear un elemento HTML (ej: div o card)
-    // TODO: Asignar los datos del item (name, description, etc.)
-    // TODO: Insertar el elemento en el contenedor
-}
-
 // Inicializar el catálogo cuando cargue la página
 loadCatalog();
