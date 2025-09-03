@@ -43,6 +43,7 @@ form.addEventListener("submit", async (e) => {
     e.preventDefault();
     const name = form.querySelector("#name").value;
     const description = form.querySelector("#description").value;
+    const price = form.querySelector("#price").value;
 
     if (!name) {
         alert("El campo nombre es obligatorio");
@@ -51,10 +52,10 @@ form.addEventListener("submit", async (e) => {
 
     try {
         if (editingId) {
-            await updateItem(editingId, { name, description });
+            await updateItem(editingId, { name, description, price });
             editingId = null;
         } else {
-            await createItem({ name, description });
+            await createItem({ name, description, price });
         }
 
         resetForm(form, submitBtn);

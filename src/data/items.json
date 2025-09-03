@@ -2,10 +2,10 @@
   {
     "name": "Objeto 1",
     "description": "Descripción 1",
-    "precio": "5000",
-    "categoria": "u",
+    "price": "5000",
+    "category": "u",
     "stock": "50",
-    "fecha": "5/52/5402",
+    "date": "5/52/5402",
     "id": 1
   },
   {
