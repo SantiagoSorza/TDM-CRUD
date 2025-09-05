@@ -7,5 +7,23 @@
     "category": "Mango",
     "stock": "7864",
     "id": 1756938053894
+  },
+  {
+    "name": "jnkj",
+    "description": "                      ",
+    "price": "351654",
+    "date": "2025-09-01",
+    "category": "Mango",
+    "stock": "6564",
+    "id": 1757088811222
+  },
+  {
+    "name": "sofia",
+    "description": "                      ",
+    "price": "465464",
+    "date": "2025-09-30",
+    "category": "Papaya",
+    "stock": "546",
+    "id": 1757088980873
   }
 ]

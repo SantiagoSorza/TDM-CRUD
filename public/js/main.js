@@ -42,7 +42,7 @@ tableBody.addEventListener("click", async (e) => {
 form.addEventListener("submit", async (e) => {
     e.preventDefault();
     const name = form.querySelector("#name").value;
-    const description = form.querySelector("#description").value;
+    const description = form.querySelector("#description").value.trim(); 
     const price = form.querySelector("#price").value;
     const date = form.querySelector("#date").value;
     const category = form.querySelector("#category").value;
@@ -50,6 +50,11 @@ form.addEventListener("submit", async (e) => {
 
     if (!name) {
         alert("El campo nombre es obligatorio");
+        return;
+    }
+
+    if (!description) {
+        alert("El campo descripción no puede estar vacío o contener espacios en blanco solamente");
         return;
     }
 
@@ -68,6 +73,7 @@ form.addEventListener("submit", async (e) => {
         alert("No se pudo guardar el item.");
     }
 });
+
 
 // Cargar al inicio
 async function loadItems() {
