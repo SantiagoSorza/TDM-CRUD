@@ -29,9 +29,8 @@ const categoryImages = {
     "Kiwi": "https://cuidateplus.marca.com/sites/default/files/cms/inline-images/kiwiok.jpg"
 };
 
-// Funcion para renderizar un item en el catálogo
 function renderItem(item) {
-    //ocultar modal del inicio
+   
     catalogModal.hidden = true; 
 
     catalogContainer.innerHTML = "";
@@ -66,12 +65,12 @@ function openModal(item, imgSrc) {
         catalogModal.innerHTML = `
         <div class="modal-content">
             <img src="${imgSrc}" alt="${item.category}" class="item-img"> 
-            <h3>${item.name}</h3>
-            <h3>${item.id}</h3>
-            <h3>${item.description}</h3>
-            <h3>${item.price}</h3>
-            <h3>${item.date}</h3>
-            <h3>${item.category}</h3>
+            <h3>Nombre: ${item.name}</h3>
+            <h3>Id: ${item.id}</h3>
+            <h3>Descripcion: ${item.description}</h3>
+            <h3>Precio: ${item.price}</h3>
+            <h3>Fecha: ${item.date}</h3>
+            <h3>Categoria: ${item.category}</h3>
             <button type="button"  id="cerrarButton">Cerrar</button>
         </div>
         `;
@@ -81,5 +80,4 @@ function openModal(item, imgSrc) {
     
 }
 
-// Inicializar el catálogo cuando cargue la página
 document.addEventListener("DOMContentLoaded", loadCatalog);
