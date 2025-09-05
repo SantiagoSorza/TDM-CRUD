@@ -21,7 +21,8 @@
     <form id="itemForm">
         <input type="text" id="name" placeholder="Nombre del item" required>
         <input type="text" id="description" placeholder="Descripción" required>
-        <input type="number" id="price" placeholder="$0" required>
+        <label name="value">Precio:</label>
+        <input type="number" id="price" placeholder="$0" min="0" required>
         <label name="categorie">Categoria:</label>
         <select name="category" id="category" placeholder="Categoria">
             <option value="Mango">Mango</option>
@@ -29,7 +30,9 @@
             <option value="Papaya">Papaya</option>
             <option value="Kiwi">Kiwi</option>
         </select>
-        <input type="number" id="stock" placeholder="0" required>
+        <label name="stock">Stock:</label>
+        <input type="number" id="stock" placeholder="0" min="0" max= "1000" required>
+        <label name="date_e">Fecha:</label>
         <input type="date" id="date" required>
 
         <button type="submit" id="submitBtn">Agregar</button>

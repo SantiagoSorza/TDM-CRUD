@@ -42,7 +42,7 @@ tableBody.addEventListener("click", async (e) => {
 form.addEventListener("submit", async (e) => {
     e.preventDefault();
     const name = form.querySelector("#name").value;
-    const description = form.querySelector("#description").value.trim(); 
+    const description = form.querySelector("#description").value.trim();
     const price = form.querySelector("#price").value;
     const date = form.querySelector("#date").value;
     const category = form.querySelector("#category").value;
@@ -54,7 +54,27 @@ form.addEventListener("submit", async (e) => {
     }
 
     if (!description) {
-        alert("El campo descripción no puede estar vacío o contener espacios en blanco solamente");
+        alert("El campo descripción no puede estar vacío o contener solo espacios en blanco");
+        return;
+    }
+
+    if (price.toLowerCase().includes('e')) {
+        alert("El campo precio no puede contener la letra 'e'");
+        return;
+    }
+
+    if (stock.toLowerCase().includes('e')) {
+        alert("El campo stock no puede contener la letra 'e'");
+        return;
+    }
+
+    if (isNaN(price) || price === '') {
+        alert("El campo precio debe ser un número válido");
+        return;
+    }
+
+    if (isNaN(stock) || stock === '') {
+        alert("El campo stock debe ser un número válido");
         return;
     }
 
@@ -73,6 +93,7 @@ form.addEventListener("submit", async (e) => {
         alert("No se pudo guardar el item.");
     }
 });
+
 
 
 // Cargar al inicio
